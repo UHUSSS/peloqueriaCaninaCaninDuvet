@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  body {
+    @apply bg-rose-50 text-gray-800 font-sans antialiased;
+    background: #FDF2F8;
+    min-height: 100vh;
+  }
+
+  ::-webkit-scrollbar { width: 5px; height: 5px; }
+  ::-webkit-scrollbar-track { @apply bg-rose-50; }
+  ::-webkit-scrollbar-thumb { @apply bg-rose-200 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-pink-400; }
+}
+
+@layer components {
+
+  /* ── Cards ────────────────────────────── */
+  .glass-card {
+    @apply bg-white border border-rose-100 rounded-2xl shadow-sm;
+  }
+  .glass-card-hover {
+    @apply glass-card transition-all duration-200 hover:border-pink-200 hover:shadow-md hover:shadow-pink-100/60 cursor-pointer;
+  }
+
+  /* ── Inputs ───────────────────────────── */
+  .input-field {
+    @apply w-full px-4 py-2.5 bg-white border border-rose-200 rounded-xl text-gray-700
+           placeholder-gray-300 text-sm outline-none transition-all duration-200
+           focus:border-pink-400 focus:ring-2 focus:ring-pink-200/60;
+  }
+
+  /* ── Buttons ──────────────────────────── */
+  .btn-primary {
+    @apply px-5 py-2.5 bg-gradient-to-r from-pink-500 to-rose-400 text-white font-semibold
+           rounded-xl transition-all duration-200 hover:from-pink-600 hover:to-rose-500
+           hover:shadow-lg hover:shadow-pink-300/40 active:scale-95 text-sm;
+  }
+  .btn-secondary {
+    @apply px-5 py-2.5 bg-white border border-rose-200 text-gray-500 font-medium
+           rounded-xl transition-all duration-200 hover:bg-rose-50 hover:text-gray-700
+           active:scale-95 text-sm;
+  }
+  .btn-danger {
+    @apply px-5 py-2.5 bg-red-50 border border-red-200 text-red-500 font-medium
+           rounded-xl transition-all duration-200 hover:bg-red-100 active:scale-95 text-sm;
+  }
+
+  /* ── Badges ───────────────────────────── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold;
+  }
+  .badge-pending    { @apply badge bg-amber-50   text-amber-600   border border-amber-200; }
+  .badge-processing { @apply badge bg-sky-50     text-sky-600     border border-sky-200; }
+  .badge-done       { @apply badge bg-emerald-50 text-emerald-600 border border-emerald-200; }
+  .badge-cancelled  { @apply badge bg-red-50     text-red-500     border border-red-200; }
+
+  /* ── Alert box ────────────────────────── */
+  .alert-box {
+    @apply bg-red-50 border border-red-200 rounded-xl p-4 flex gap-3;
+  }
+
+  /* ── Nav links ────────────────────────── */
+  .nav-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-gray-500 font-medium text-sm
+           transition-all duration-200 hover:bg-pink-50 hover:text-pink-600 cursor-pointer;
+  }
+  .nav-link-active {
+    @apply nav-link bg-gradient-to-r from-pink-100 to-rose-50 text-pink-600
+           border border-pink-200/60 font-semibold;
+  }
+
+  /* ── Section title ────────────────────── */
+  .section-title { @apply text-2xl font-bold text-gray-800; }
+  .label         { @apply block text-sm font-medium text-gray-500 mb-1.5; }
+
+  /* ── Stat card ────────────────────────── */
+  .stat-card { @apply glass-card p-6 flex flex-col gap-2; }
+
+  /* ── Table ────────────────────────────── */
+  .table-row { @apply hover:bg-rose-50/60 transition-colors; }
+
+  /* ── Animations ───────────────────────── */
+  .animate-fade-in  { animation: fadeIn  0.2s ease-out; }
+  .animate-slide-up { animation: slideUp 0.3s ease-out; }
+}
+
+@keyframes fadeIn  { from { opacity: 0 }            to { opacity: 1 } }
+@keyframes slideUp { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: translateY(0) } }
